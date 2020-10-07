@@ -1,0 +1,6 @@
+# npx browserslist 检测该配置筛选了那些浏览器
+
+> 1%
+last 2 versions
+not ie < 11
+not dead
