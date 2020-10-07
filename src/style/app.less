@@ -1,0 +1,107 @@
+// 将会被导入作为全局样式
+html {
+  box-sizing: border-box;
+  word-break: break-word;
+  font-family: system -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', Arial, sans-serif;
+  color: @color;
+  background-color: @bg;
+  line-height: 1.5;
+  font-size: 14px;
+}
+
+body {
+  min-height: 100vh;
+  height: auto;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  -ms-overflow-style: none; // 隐藏 ie11 滚动条
+}
+
+::-webkit-scrollbar {
+  display: none; // 去除所有元素的滚动条
+}
+
+a { text-decoration: none; }
+
+input {
+  outline: none;
+  border: none;
+  font-size: 14px;
+}
+
+button {
+  outline: none;
+  border: none;
+}
+
+::-moz-placeholder { color: @placeholder; }
+::-webkit-input-placeholder { color: @placeholder; }
+:-ms-input-placeholder { color: @placeholder; }
+
+.text-overflow-1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  word-break: break-all;
+}
+
+.text-overflow-2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-all;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  .flex;
+
+  align-items: center;
+  justify-content: center;
+}
+
+.flex-between {
+  .flex;
+
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex-around {
+  .flex;
+
+  align-items: center;
+  justify-content: space-around;
+}
+
+.flex-middle {
+  .flex;
+
+  align-items: center;
+}
+
+.flex-auto {
+  flex: auto; // 1 1 auto 放大
+}
+
+.flex-none {
+  flex: none; // 0 0 auto 不缩小
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.primary {
+  color: @primary;
+}
