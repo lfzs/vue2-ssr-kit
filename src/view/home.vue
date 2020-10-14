@@ -1,8 +1,12 @@
 <template>
   <div @click="say">
-    <span>{{ age }}</span>
+    <p>{{ age }}1</p>
+    <p>asyncData {{ asyncData }}</p>
     <p>{{ Date.now() | formatTime }}</p>
-    <img :src="logo" alt="" />
+    <div>
+      <img :src="logo" alt="" />
+    </div>
+    <details />
   </div>
 </template>
 
@@ -12,13 +16,17 @@
   export default {
     name: 'home',
 
+    comments: {
+      detail: import('./detail')
+    },
+
     asyncData() {
-      return 666
+      return 668
     },
 
     data() {
       return {
-        age: 30,
+        age: 33,
         logo,
       }
     },
@@ -35,8 +43,5 @@
 <style lang="less" scoped>
   div {
     border: 1px red solid;
-    color: @primary;
-    display: flex;
-    justify-content: center;
   }
 </style>

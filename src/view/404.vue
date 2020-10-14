@@ -4,7 +4,7 @@
 
 <script>
   export default {
-
+    name: 'page-404',
   }
 </script>
 

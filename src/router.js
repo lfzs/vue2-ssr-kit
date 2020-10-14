@@ -7,14 +7,14 @@ const routes = [
   {
     name: 'home',
     path: '/',
-    component: () => import('./view/home.vue')
+    component: () => import(/* webpackChunkName: "home" */ './view/home.vue')
   },
   {
     name: 'detail',
     path: '/detail',
-    component: () => import('./view/detail.vue')
+    component: () => import(/* webpackChunkName: "detail" */ './view/detail.vue')
   },
-  { path: '*', component: () => import('./view/404') },
+  { path: '*', component: () => import(/* webpackChunkName: "404" */ './view/404') },
 ]
 
 export const createRouter = () => new VueRouter({ mode: 'history', routes })
