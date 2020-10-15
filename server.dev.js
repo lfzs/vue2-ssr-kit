@@ -1,10 +1,11 @@
 const fs = require('fs')
 const path = require('path')
+const FriendlyErrorsWebpackPlugin = require('friendly-errors-webpack-plugin')
 const express = require('express')
 const favicon = require('serve-favicon')
 const resolve = dir => path.join(__dirname, dir)
 
-let renderer
+let renderer, host = '0.0.0.0', port = 8080
 const app = express()
 updateRenderer()
 
@@ -25,7 +26,7 @@ app.get('*', async (req, res) => {
   res.send(html)
 })
 
-app.listen(8080)
+app.listen(port, host)
 
 // 创建 render 给 app 使用
 function updateRenderer() {
@@ -61,8 +62,10 @@ function updateRenderer() {
   })
 
   // 修改入口 -> 热更新
-  clientConfig.entry = ['webpack-hot-middleware/client', clientConfig.entry]
+  clientConfig.entry = ['webpack-hot-middleware/client?reload=true', clientConfig.entry]
   clientConfig.plugins.push(new webpack.HotModuleReplacementPlugin())
+
+  clientConfig.plugins.push(new FriendlyErrorsWebpackPlugin({ compilationSuccessInfo: { messages: [`Your server is running here http://${host}:${port}`] } }))
 
   const clientComplier = webpack(clientConfig)
   const clientMiddleware = webpackDevMiddleware(clientComplier, { logLevel: 'silent' })
