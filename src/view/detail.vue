@@ -12,7 +12,7 @@
       }
     },
 
-    asyncData() {
+    asyncFetchData() {
       return 'detail'
     },
 

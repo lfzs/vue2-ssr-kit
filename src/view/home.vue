@@ -1,32 +1,34 @@
 <template>
   <div @click="say">
-    <p>{{ age }}1</p>
+    <p>{{ age }}</p>
     <p>asyncData {{ asyncData }}</p>
     <p>{{ Date.now() | formatTime }}</p>
     <div>
       <img :src="logo" alt="" />
     </div>
-    <details />
+    <detail />
   </div>
 </template>
 
 <script>
   import logo from '@/static/logo.png'
+  import detail from './detail'
 
   export default {
     name: 'home',
 
-    comments: {
-      detail: import('./detail')
+    components: {
+      detail,
     },
 
-    asyncData() {
+    asyncFetchData() {
       return 668
     },
 
     data() {
       return {
         age: 33,
+        asyncData: {},
         logo,
       }
     },
