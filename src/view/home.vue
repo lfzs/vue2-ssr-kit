@@ -4,7 +4,7 @@
     <p>asyncData {{ asyncData }}</p>
     <p>{{ Date.now() | formatTime }}</p>
     <div>
-      <img :src="logo" alt="" />
+      <img :src="logo" alt="logo" />
     </div>
     <detail />
   </div>
@@ -21,14 +21,20 @@
       detail,
     },
 
-    asyncFetchData() {
+    async asyncFetchData({ $axios }) {
+      await Promise.all([
+        $axios.get('admin_users'),
+      ])
       return 668
+    },
+
+    async mounted() {
     },
 
     data() {
       return {
         age: 33,
-        asyncData: {},
+        asyncData: '',
         logo,
       }
     },

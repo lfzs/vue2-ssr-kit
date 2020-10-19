@@ -5,16 +5,25 @@ Vue.use(VueRouter)
 
 const routes = [
   {
-    name: 'home',
     path: '/',
-    component: () => import(/* webpackChunkName: "home" */ './view/home.vue')
+    alias: ['/index', '/index.html'],
+    component: () => import(/* webpackChunkName: "home" */ '@/view/home.vue')
   },
   {
-    name: 'detail',
     path: '/detail',
-    component: () => import(/* webpackChunkName: "detail" */ './view/detail.vue')
+    component: () => import(/* webpackChunkName: "detail" */ '@/view/detail.vue')
   },
-  { path: '*', component: () => import(/* webpackChunkName: "404" */ './view/404') },
+  {
+    path: '/signin',
+    component: () => import(/* webpackChunkName: "signin" */ '@/view/signin.vue'),
+    meta: {
+      title: '登录',
+    },
+  },
+  {
+    path: '*',
+    component: () => import(/* webpackChunkName: "404" */ '@/view/404.vue')
+  },
 ]
 
 export const createRouter = () => new VueRouter({ mode: 'history', routes })

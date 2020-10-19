@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const { merge } = require('webpack-merge')
 const base = require('./webpack.base.config')
 const VueSSRClientPlugin = require('vue-server-renderer/client-plugin')
@@ -17,5 +18,6 @@ module.exports = merge(base, {
   plugins: [
     // new BundleAnalyzerPlugin(),
     new VueSSRClientPlugin(),
+    new webpack.DefinePlugin({ 'process.env.browser': 'true' }), // 客户端注入环境变量 browser
   ],
 })

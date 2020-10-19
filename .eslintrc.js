@@ -90,6 +90,6 @@ module.exports = {
   }],
 
   'globals': {
-    'axios': true,
+    '$app': true
   },
 }
