@@ -4,7 +4,7 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "cross-env APP_ENV=development node server.dev",
+    "start": "cross-env APP_ENV=development node dev.server",
     "dev": "yarn && yarn dev:client && yarn dev:server",
     "dev:client": "cross-env APP_ENV=development webpack --config build/webpack.client.config",
     "dev:server": "cross-env APP_ENV=development webpack --config build/webpack.server.config",
@@ -62,6 +62,7 @@
     "eslint-plugin-vue": "^7.1.0",
     "express": "^4.17.1",
     "file-loader": "^6.1.1",
+    "http-proxy-middleware": "^1.0.6",
     "husky": "^4.3.0",
     "less": "^3.12.2",
     "less-loader": "^7.0.2",
