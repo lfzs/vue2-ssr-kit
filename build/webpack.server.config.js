@@ -13,7 +13,7 @@ module.exports = merge(base, {
   devtool: isDev && 'source-map',
 
   output: {
-    path: resolve('../dist/server'),
+    path: resolve('../server/bundle/server'),
     libraryTarget: 'commonjs2',
   },
   plugins: [

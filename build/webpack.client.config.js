@@ -12,7 +12,7 @@ module.exports = merge(base, {
   devtool: isDev && 'eval-cheap-source-map',
 
   output: {
-    path: resolve('../dist/client'),
+    path: resolve('../server/bundle/client'),
   },
 
   plugins: [
