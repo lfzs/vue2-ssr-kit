@@ -1,0 +1,11 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.17.1",
+    "serve-favicon": "^2.5.0",
+    "vue-server-renderer": "^2.6.12"
+  }
+}
