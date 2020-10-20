@@ -4,6 +4,7 @@ import { createRouter } from '@/Router'
 import { axios } from '@/util'
 
 Vue.prototype.$axios = axios
+Vue.config.productionTip = false
 
 import { formatTime } from '@/filter'
 Vue.filter('formatTime', formatTime)
