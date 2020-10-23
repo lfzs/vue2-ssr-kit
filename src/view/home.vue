@@ -3,6 +3,7 @@
     <base-nav />
     <img :src="logo" alt="logo" />
     <p v-for="item of asyncData" :key="item.id">{{ item.title }}</p>
+    <el-button type="primary" icon="el-icon-search">搜索</el-button>
   </div>
 </template>
 
@@ -15,6 +16,10 @@
     async asyncFetchData({ $axios }) {
       const { data } = await $axios.get('items')
       return data
+    },
+
+    async mounted() {
+      await $app.$axios.get('user')
     },
 
     data() {

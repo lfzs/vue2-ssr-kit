@@ -2,7 +2,7 @@ module.exports = {
   presets: ['@babel/preset-env'],
   plugins: [
     'lodash',
-    ['component', { 'libraryName': 'element-ui', 'styleLibraryName': '~theme' }],
+    ['component', { 'libraryName': 'element-ui', 'styleLibraryName': '~element-theme-409eff' }],
     '@babel/plugin-proposal-export-default-from',
     '@babel/plugin-proposal-optional-chaining',
     '@babel/plugin-proposal-nullish-coalescing-operator',
