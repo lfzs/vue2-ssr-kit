@@ -1,6 +1,6 @@
 const env = {
   development: {
-    host: '',
+    host: 'http://0.0.0.0:8080',
   },
   staging: {
     host: '',
@@ -11,4 +11,4 @@ const env = {
 }
 
 export const { host } = env[process.env.APP_ENV]
-export const baseURL = `${host}/mgt/api/v1`
+export const baseURL = `${host}/app/api/v1`
