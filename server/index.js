@@ -1,11 +1,13 @@
 const fs = require('fs')
 const path = require('path')
+const LRU = require('lru-cache')
 const resolve = dir => path.join(__dirname, dir)
 
 const { createBundleRenderer } = require('vue-server-renderer')
 const serverBundle = require('./bundle/server/vue-ssr-server-bundle')
 const clientManifest = require('./bundle/client/vue-ssr-client-manifest')
 const renderer = createBundleRenderer(serverBundle, {
+  cache: LRU({ max: 10000, maxAge: 1000 * 60 * 15 }),
   runInNewContext: false,
   clientManifest,
   template: fs.readFileSync(resolve('./template.html'), 'utf-8'),
