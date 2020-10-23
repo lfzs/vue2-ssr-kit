@@ -3,6 +3,8 @@ import App from '@/app.vue'
 import { createRouter } from '@/Router'
 import { axios } from '@/util'
 
+import '@/component/base-component' // 组件全局注册
+
 Vue.prototype.$axios = axios
 Vue.config.productionTip = false
 
