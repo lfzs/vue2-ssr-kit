@@ -25,7 +25,8 @@
   "lint-staged": {
     "src/**/*.{vue,html,css,less,scss,sass}": "stylelint --max-warnings 0",
     "src/**/*.{js,vue}": "eslint --max-warnings 0",
-    "build/*.js": "eslint --max-warnings 0",
+    "build/**/*.js": "eslint --max-warnings 0",
+    "server/**/*.js": "eslint --max-warnings 0",
     "./*.js": "eslint --max-warnings 0"
   },
   "dependencies": {
