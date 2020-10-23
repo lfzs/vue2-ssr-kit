@@ -2,17 +2,17 @@ const fs = require('fs')
 const path = require('path')
 const express = require('express')
 const favicon = require('serve-favicon')
-const { createProxyMiddleware } = require('http-proxy-middleware')
+// const { createProxyMiddleware } = require('http-proxy-middleware')
 const resolve = dir => path.join(__dirname, dir)
 
 let renderer
 const app = express()
 createRenderer() // 提前生成 renderer (没有生成 renderer 之前不可以访问 express 路由)
-app.use('/api', createProxyMiddleware({ target: 'https://www.example.com', changeOrigin: true, secure: false })) // 代理配置
+// app.use('/api', createProxyMiddleware({ target: 'https://www.example.com', changeOrigin: true, secure: false })) // 代理配置
 app.use(favicon(resolve('./server/favicon.ico')))
 app.use(express.static('./server/public'))
 app.get('*', (req, res) => renderer.renderToString({ url: req.url }).then(html => res.send(html)).catch(error => handleError(error, res)))
-app.listen(8080, '0.0.0.0', () => console.log('server started at http://0.0.0.0:8080')) // eslint-disable-line no-console
+app.listen(8080, '127.0.0.1', () => console.log('server started at http://127.0.0.1:8080')) // eslint-disable-line no-console
 
 function handleError(error, res) {
   const status = error?.response?.status

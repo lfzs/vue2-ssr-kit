@@ -1,6 +1,6 @@
 const env = {
   development: {
-    host: 'http://0.0.0.0:8080',
+    host: '',
   },
   staging: {
     host: '',

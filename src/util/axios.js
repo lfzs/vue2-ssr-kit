@@ -2,10 +2,8 @@ import axios from 'axios'
 import { getErrorMessage } from '@/util'
 import { baseURL } from '@/env'
 import { authStore } from '@/store'
-// import { Message } from 'element-ui' TODO
-const Message = {}
+import { Message } from 'element-ui'
 axios.defaults.baseURL = baseURL
-axios.defaults.withCredentials = true
 axios.defaults.timeout = 60000
 
 axios.interceptors.request.use(handleRequest)

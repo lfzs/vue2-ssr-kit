@@ -7,7 +7,7 @@ const { createBundleRenderer } = require('vue-server-renderer')
 const serverBundle = require('./bundle/server/vue-ssr-server-bundle')
 const clientManifest = require('./bundle/client/vue-ssr-client-manifest')
 const renderer = createBundleRenderer(serverBundle, {
-  cache: LRU({ max: 10000, maxAge: 1000 * 60 * 15 }),
+  cache: new LRU({ max: 10000, maxAge: 1000 * 60 * 15 }),
   runInNewContext: false,
   clientManifest,
   template: fs.readFileSync(resolve('./template.html'), 'utf-8'),
@@ -21,7 +21,7 @@ app.use(favicon(resolve('./favicon.ico')))
 app.use(express.static(resolve('./public')))
 app.use(express.static(resolve('./bundle/client')))
 app.get('*', (req, res) => renderer.renderToString({ url: req.url }).then(html => res.send(html)).catch(error => handleError(error, res)))
-app.listen(3000, () => console.log(`server started at http://127.0.0.1:3000`))
+app.listen(3000, '127.0.0.1', () => console.log(`server started at http://127.0.0.1:3000`))
 
 function handleError(error, res) {
   const status = error?.response?.status
