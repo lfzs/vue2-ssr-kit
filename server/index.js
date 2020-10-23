@@ -21,7 +21,7 @@ app.use(favicon(resolve('./favicon.ico')))
 app.use(express.static(resolve('./public')))
 app.use(express.static(resolve('./bundle/client')))
 app.get('*', (req, res) => renderer.renderToString({ url: req.url }).then(html => res.send(html)).catch(error => handleError(error, res)))
-app.listen(3000, '127.0.0.1', () => console.log(`server started at http://127.0.0.1:3000`))
+app.listen(3000, '127.0.0.1', () => console.log('server started at http://127.0.0.1:3000')) // eslint-disable-line no-console
 
 function handleError(error, res) {
   const status = error?.response?.status
