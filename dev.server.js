@@ -12,7 +12,7 @@ createRenderer() // 提前生成 renderer (没有生成 renderer 之前不可以
 app.use(favicon(resolve('./server/favicon.ico')))
 app.use(express.static('./server/public'))
 app.get('*', (req, res) => renderer.renderToString({ url: req.url }).then(html => res.send(html)).catch(error => handleError(error, res)))
-app.listen(8080, '127.0.0.1', () => console.log('server started at http://127.0.0.1:8080')) // eslint-disable-line no-console
+app.listen(8080, '0.0.0.0', () => console.log('server started at http://0.0.0.0:8080')) // eslint-disable-line no-console
 
 function handleError(error, res) {
   const status = error?.response?.status
