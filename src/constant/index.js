@@ -1,2 +1,4 @@
-export const TOKEN_KEY = `token_${process.env.APP_ENV}`
+const flag = process.env.APP_ENV.toLocaleUpperCase()
+
+export const TOKEN_KEY = `TOKEN_${flag}`
 export const APP_NAME = 'app_name'
