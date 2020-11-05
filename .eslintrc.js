@@ -8,7 +8,7 @@ module.exports = {
 
   'parser': 'vue-eslint-parser',
   'parserOptions': {
-    'parser': 'babel-eslint',
+    'parser': '@babel/eslint-parser',
     'sourceType': 'module',
     'ecmaFeatures': {
       'legacyDecorators': true,
@@ -90,6 +90,6 @@ module.exports = {
   }],
 
   'globals': {
-    '$app': true
+    '$app': 'readonly'
   },
 }

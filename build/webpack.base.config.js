@@ -2,6 +2,7 @@ const webpack = require('webpack')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin') // client production 环境，提取行内的 style 到 .css 文件 利于缓存处理。dev 模式不提取为了热更新, server 不要处理 css
 const StyleLintPlugin = require('stylelint-webpack-plugin')
+const ESLintPlugin = require('eslint-webpack-plugin')
 const VueLoaderPlugin = require('vue-loader/lib/plugin')
 
 // https://github.com/webpack-contrib/mini-css-extract-plugin/issues/90#issuecomment-392968392 fix 服务端不能提取 css
@@ -29,6 +30,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: resolve('../src'), emitWarning: isDev, emitError: !isDev }),
+    new ESLintPlugin({ files: '**/*.{js,vue}', context: resolve('../src'), emitWarning: isDev, emitError: !isDev }),
     new webpack.EnvironmentPlugin(['APP_ENV']),
     new webpack.ProgressPlugin(),
     new VueLoaderPlugin(),
@@ -36,7 +38,6 @@ module.exports = {
   ],
   module: {
     rules: [
-      { test: /\.(js|vue)$/, use: [{ loader: 'eslint-loader', options: { cache: true, emitWarning: isDev, emitError: !isDev } }], exclude: /node_modules/, include: resolve('../src'), enforce: 'pre' },
       { test: /\.vue$/, use: 'vue-loader', exclude: /node_modules/ },
       { test: /\.js$/, use: 'babel-loader?cacheDirectory=true', exclude: /node_modules/ },
 
