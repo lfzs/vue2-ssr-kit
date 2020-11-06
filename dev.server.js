@@ -1,5 +1,6 @@
 const fs = require('fs')
 const path = require('path')
+const portfinder = require('portfinder')
 const express = require('express')
 const favicon = require('serve-favicon')
 const { createProxyMiddleware } = require('http-proxy-middleware')
@@ -12,15 +13,18 @@ app.use('/app', createProxyMiddleware({ target: 'https://www.example.com', chang
 app.use(favicon(resolve('./server/favicon.ico')))
 app.use(express.static('./server/public'))
 app.get('*', (req, res) => renderer.renderToString({ url: req.url }).then(html => res.send(html)).catch(error => handleError(error, res)))
-app.listen(8080, '0.0.0.0', () => console.log('server started at http://0.0.0.0:8080')) // eslint-disable-line no-console
+portfinder.getPort((error, port) => {
+  if (error) {
+    console.log(error) // eslint-disable-line no-console
+    process.exit(1)
+  }
+  app.listen(port, '0.0.0.0', () => console.log(`server started at http://0.0.0.0:${port}`)) // eslint-disable-line no-console
+})
 
 function handleError(error, res) {
   const status = error?.response?.status
-
-  /* eslint-disable */
-  console.error('===================== Server Error =====================')
-  console.error(status, error?.response?.data || error)
-  /* eslint-enable */
+  console.log('===================== Server Error =====================') // eslint-disable-line no-console
+  console.log(status, error?.response?.data || error) // eslint-disable-line no-console
 
   if (status === 401) res.redirect('/signin')
   else if (status === 404) res.redirect('/404')
