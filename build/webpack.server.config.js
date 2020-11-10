@@ -19,4 +19,9 @@ module.exports = merge(base, {
   plugins: [
     new VueSSRServerPlugin()
   ],
+  module: {
+    rules: [
+      { test: /\.(le|sc|c)ss$/, use: 'null-loader' }, // 服务端不处理 css 文件
+    ]
+  },
 })
