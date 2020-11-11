@@ -56,7 +56,7 @@ function createRenderer() {
     }
   }
 
-  //  server (不需要热更新)
+  // server (不需要热更新)
   const MFS = require('memory-fs')
   const mfs = new MFS()
   const serverConfig = require('./build/webpack.server.config')
