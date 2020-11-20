@@ -1,8 +1,10 @@
-export default class {
+import Cache from './Cache'
+
+export default class extends Cache {
   data = []
 
   state = 'pending'
-  meta = { total: 0, page: 1, per_page: 20 }
+  meta = { total: 0, pageSize: 20 }
 
   api = ''
   param = {}
@@ -10,9 +12,9 @@ export default class {
   async fetchData() {
     this.state = 'pending'
     try {
-      const { data, meta } = await $app.$axios.get(this.api, { params: { page: 1, per_page: this.meta.per_page, ...this.param } })
-      this.data = data
-      this.meta = meta
+      const { data, meta } = await $app.$axios.get(this.api, { params: { offset: 1, pageSize: this.meta.pageSize, ...this.param } })
+      this.data = data ?? this.data
+      this.meta = meta ?? this.meta
       this.state = 'done'
     } catch (error) {
       this.state = 'error'
@@ -30,7 +32,7 @@ export default class {
 
     this.state = 'pending'
     try {
-      const { data, meta } = await $app.$axios.get(this.api, { params: { page: this.meta.page + 1, per_page: this.meta.per_page, ...this.param } })
+      const { data, meta } = await $app.$axios.get(this.api, { params: { offset: this.data.length, pageSize: this.meta.pageSize, ...this.param } })
       this.data.push(...data)
       this.meta = meta
       this.state = 'done'

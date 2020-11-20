@@ -15,7 +15,7 @@ function handleRequest(request) {
 
 function handleResponse(response) {
   // 2xx 拦截
-  return response
+  return response.data
 }
 
 async function handleResponseError(error) {
@@ -28,11 +28,11 @@ async function handleResponseError(error) {
       authStore.setNext(location.href)
       await $app.$router.replace({ path: 'signin' })
     } else {
-      showErrorToast && Message.error({ message: getErrorMessage(data.error_message) })
+      showErrorToast && Message.error({ message: getErrorMessage(data) })
     }
   }
 
-  return Promise.reject(error)
+  return Promise.reject(error?.response?.data)
 }
 
 export default axios
