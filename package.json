@@ -4,16 +4,16 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "yarn && cross-env APP_ENV=development node dev.server",
+    "start": "yarn && cross-env APP_ENV=development BASE_URL=/ node dev.server",
     "dev": "yarn && yarn dev:client && yarn dev:server",
-    "dev:client": "cross-env APP_ENV=development webpack --config build/webpack.client.config",
-    "dev:server": "cross-env APP_ENV=development webpack --config build/webpack.server.config",
+    "dev:client": "cross-env APP_ENV=development BASE_URL=/ webpack --config build/webpack.client.config",
+    "dev:server": "cross-env APP_ENV=development BASE_URL=/ webpack --config build/webpack.server.config",
     "staging": "yarn && yarn staging:client && yarn staging:server",
-    "staging:client": "cross-env APP_ENV=staging webpack --config build/webpack.client.config",
-    "staging:server": "cross-env APP_ENV=staging webpack --config build/webpack.server.config",
+    "staging:client": "cross-env APP_ENV=staging BASE_URL=/ webpack --config build/webpack.client.config",
+    "staging:server": "cross-env APP_ENV=staging BASE_URL=/ webpack --config build/webpack.server.config",
     "build": "yarn && yarn build:client && yarn build:server",
-    "build:client": "cross-env APP_ENV=production webpack --config build/webpack.client.config",
-    "build:server": "cross-env APP_ENV=production webpack --config build/webpack.server.config",
+    "build:client": "cross-env APP_ENV=production BASE_URL=/ webpack --config build/webpack.client.config",
+    "build:server": "cross-env APP_ENV=production BASE_URL=/ webpack --config build/webpack.server.config",
     "lint": "yarn && stylelint --max-warnings 0 'src/**/*.{vue,html,css,less,scss,sass}' && eslint --max-warnings 0 'src/**/*.{js,vue}'"
   },
   "husky": {

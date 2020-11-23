@@ -29,7 +29,11 @@ const routes = [
 ]
 
 export const createRouter = () => {
-  const router = new VueRouter({ mode: 'history', routes })
+  const router = new VueRouter({
+    mode: 'history',
+    base: process.env.BASE_URL || '/',
+    routes,
+  })
 
   if (process.env.browser) {
     router.beforeEach((to, from, next) => {
