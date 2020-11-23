@@ -11,7 +11,7 @@ module.exports = {
   output: {
     filename: `js/${isDev ? '[name]' : '[hash]'}.js`,
     chunkFilename: `js/${isDev ? 'chunk.[name]' : '[contenthash]'}.js`,
-    publicPath: '/',
+    publicPath: process.env.BASE_URL || '/',
   },
   mode: isDev ? 'development' : 'production',
   resolve: {
@@ -23,7 +23,7 @@ module.exports = {
     new CleanWebpackPlugin(),
     new StyleLintPlugin({ files: '**/*.{vue,html,css,less,scss,sass}', context: resolve('../src'), emitWarning: isDev, emitError: !isDev }),
     new ESLintPlugin({ files: '**/*.{js,vue}', context: resolve('../src'), emitWarning: isDev, emitError: !isDev }),
-    new webpack.EnvironmentPlugin(['APP_ENV']),
+    new webpack.EnvironmentPlugin(['APP_ENV', 'BASE_URL']),
     new webpack.ProgressPlugin(),
     new VueLoaderPlugin(),
   ],
