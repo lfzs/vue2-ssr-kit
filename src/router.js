@@ -8,8 +8,11 @@ const routes = [
   {
     path: '/',
     alias: ['/index', '/index.html'],
-    meta: { title: 'Home' },
-    component: () => import(/* webpackChunkName: "home" */ '@/view/home.vue')
+    component: () => import(/* webpackChunkName: "home" */ '@/view/home.vue'),
+    meta: {
+      title: 'Home',
+      keepAlive: true,
+    },
   },
   {
     path: '/detail',
