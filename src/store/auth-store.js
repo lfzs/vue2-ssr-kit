@@ -6,7 +6,8 @@ export default new class {
   }
 
   signinNext() {
-    this.#next ? (location.href = this.#next) : $app.$router.replace({ path: '/' })
+    location.href = this.#next || '/'
+    this.#next = ''
   }
 
   signin({ mobile = '', password = '' }) {
