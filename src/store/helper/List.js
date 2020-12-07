@@ -9,6 +9,10 @@ export default class extends Cache {
   api = ''
   param = {}
 
+  setParam(param = {}) {
+    this.param = { ...this.param, ...param }
+  }
+
   async fetchData() {
     this.state = 'pending'
     try {
