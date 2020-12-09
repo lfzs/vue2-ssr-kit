@@ -18,7 +18,7 @@ Vue.filter('formatTime', formatTime)
 
 export const createApp = () => {
   const router = createRouter()
-  const app = new Vue({ router, render: h => h(App) })
+  const app = new Vue({ name: 'app', router, render: h => h(App) })
 
   if (process.env.browser) window.$app = app // 客户端全局挂载实例
   return { app }
