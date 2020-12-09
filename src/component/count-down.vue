@@ -4,6 +4,7 @@
 
 <script>
   export default {
+    name: 'count-down',
     props: {
       now: {
         type: Date,
