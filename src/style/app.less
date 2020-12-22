@@ -12,6 +12,11 @@ html {
 body {
   min-height: 100vh;
   height: auto;
+
+  &::before {
+    content: '';
+    display: table;
+  }
 }
 
 *,
@@ -106,6 +111,15 @@ button {
 
 .pointer {
   cursor: pointer;
+}
+
+.none-pointer-events {
+  pointer-events: none;
+}
+
+.margin-collapse::before {
+  content: '';
+  display: table;
 }
 
 .primary {
