@@ -20,6 +20,13 @@ export const createApp = () => {
   const router = createRouter()
   const app = new Vue({ name: 'app', router, render: h => h(App) })
 
-  if (process.env.browser) window.$app = app // 客户端全局挂载实例
+  if (process.env.browser) {
+    window.$app = app // 客户端全局挂载实例
+
+    // 根元素添加 --vh 变量
+    document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`)
+    window.addEventListener('resize', () => document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`))
+
+  }
   return { app }
 }

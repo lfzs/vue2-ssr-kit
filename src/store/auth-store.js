@@ -6,7 +6,7 @@ export default new class {
   }
 
   signinNext() {
-    location.href = this.#next || '/'
+    location.replace(this.#next || '/')
     this.#next = ''
   }
 
