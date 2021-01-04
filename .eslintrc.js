@@ -9,6 +9,7 @@ module.exports = {
   'parser': 'vue-eslint-parser',
   'parserOptions': {
     'parser': '@babel/eslint-parser',
+    'ecmaVersion': 2021,
     'sourceType': 'module',
     'ecmaFeatures': {
       'legacyDecorators': true,
@@ -17,7 +18,7 @@ module.exports = {
   },
 
   'env': {
-    'es6': true,
+    'es2021': true,
     'browser': true,
     'node': true,
   },
