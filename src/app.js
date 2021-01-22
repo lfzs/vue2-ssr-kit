@@ -9,6 +9,10 @@ import { axios } from '@/util'
 import '@/component/base-component' // 组件全局注册
 import '@/component/element-ui' // element 组件全局注册
 
+// 全局样式
+import 'normalize.css'
+import '@/style/app.less'
+
 Vue.prototype.$axios = axios
 Vue.prototype.$get = _.get
 Vue.config.productionTip = false
